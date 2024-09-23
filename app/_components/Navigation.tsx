@@ -1,23 +1,44 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import { usePathname } from "next/navigation";
 
-function Navigation() {
+export default function Navigation() {
+  const currentPath = usePathname();
+  console.log(currentPath, "currentpath");
   return (
-    <ul>
-      <li>
-        <Link href="/">Home</Link>
-      </li>
-      <li>
-        <Link href="/cabins">Cabins</Link>
-      </li>
-      <li>
-        <Link href="/account">account</Link>
-      </li>
-      <li>
-        <Link href="/about">about</Link>
-      </li>
-    </ul>
+    <nav className="z-10 text-xl">
+      <ul className="flex gap-16 items-center">
+        <li>
+          <Link
+            href="/cabins"
+            className={`${
+              currentPath.startsWith("/cabins") ? "text-amber-300" : ""
+            } hover:text-accent-400 transition-colors`}
+          >
+            Cabins
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/about"
+            className={`${
+              currentPath === "/about" ? "text-amber-300" : ""
+            } hover:text-accent-400 transition-colors`}
+          >
+            About
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/account"
+            className={`${
+              currentPath === "/account" ? "text-amber-300" : ""
+            } hover:text-accent-400 transition-colors`}
+          >
+            Guest area
+          </Link>
+        </li>
+      </ul>
+    </nav>
   );
 }
-
-export default Navigation;
