@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Image1 from "@/public/about-1.jpg";
-import Image2 from "@/public/about-2.jpg";
 
 export const metadata = { title: "About" };
 

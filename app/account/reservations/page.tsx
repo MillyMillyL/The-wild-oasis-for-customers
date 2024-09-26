@@ -4,7 +4,11 @@ export const metadata = { title: "Reservations" };
 
 export default function Page() {
   // CHANGE
-  const bookings = [];
+  // eslint-disable-next-line
+  interface Booking {
+    id: string;
+  }
+  const bookings: Booking[] = [];
 
   return (
     <div>

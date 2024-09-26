@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 
 export default function Navigation() {
   const currentPath = usePathname();
-  console.log(currentPath, "currentpath");
+
   return (
     <nav className="z-10 text-xl">
       <ul className="flex gap-16 items-center">

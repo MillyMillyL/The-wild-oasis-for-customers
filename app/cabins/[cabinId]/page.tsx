@@ -1,15 +1,28 @@
-import { getCabin } from "@/app/_lib/data-service";
+import { getCabin, getCabins } from "@/app/_lib/data-service";
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import React from "react";
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: { cabinId: string };
+}) {
   const { name } = await getCabin(params.cabinId);
 
   return { title: `Cabin ${name}` };
 }
 
-async function page({ params }) {
+export async function generateStaticParams() {
+  const cabins = await getCabins();
+  const cabinIds = cabins.map((cabin) => ({
+    cabinId: String(cabin.id),
+  }));
+
+  return cabinIds;
+}
+
+async function page({ params }: { params: { cabinId: string } }) {
   const cabinId = params.cabinId;
   const cabin = await getCabin(cabinId);
   const { name, maxCapacity, image, description } = cabin;
@@ -23,6 +36,7 @@ async function page({ params }) {
             alt={`Cabin ${name}`}
             fill
             className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
         <div>
@@ -31,7 +45,7 @@ async function page({ params }) {
           </h3>
           <p className="text-lg text-primary-300 mb-10">
             {/* TextExpander is now just a regular React component like all others */}
-            <p>{description}</p>
+            {description}
           </p>
 
           <ul className="flex flex-col gap-4 mb-7">
