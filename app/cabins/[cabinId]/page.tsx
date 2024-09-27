@@ -3,6 +3,8 @@ import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import React from "react";
 
+// export const revalidate = 60;
+
 export async function generateMetadata({
   params,
 }: {
@@ -25,7 +27,7 @@ export async function generateStaticParams() {
 async function page({ params }: { params: { cabinId: string } }) {
   const cabinId = params.cabinId;
   const cabin = await getCabin(cabinId);
-  const { name, maxCapacity, image, description } = cabin;
+  const { name, maxCapacity, image, description, regularPrice } = cabin;
 
   return (
     <div className=" max-w-6xl mx-auto mt-8">
@@ -68,6 +70,10 @@ async function page({ params }: { params: { cabinId: string } }) {
               <span className="text-lg">
                 Privacy <span className="font-bold">100%</span> guaranteed
               </span>
+            </li>
+            <li className="flex gap-3 items-center">
+              <EyeSlashIcon className="h-5 w-5 text-primary-600" />
+              <span className="text-lg">Price: {regularPrice}</span>
             </li>
           </ul>
         </div>
