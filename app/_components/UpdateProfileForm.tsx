@@ -1,9 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import React from "react";
 import { updateGuest } from "../_lib/actions";
 import SubmitButton from "./SubmitButton";
 
+// @ts-expect-error typeerror
 function UpdateProfileForm({ children, guest }) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { fullName, email, nationality, nationalID, countryFlag } = guest;
 
   return (

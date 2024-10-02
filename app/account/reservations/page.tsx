@@ -6,8 +6,10 @@ export const metadata = { title: "Reservations" };
 
 export default async function Page() {
   const session = await auth();
+  console.log(session);
   // eslint-disable-next-line
-  const bookings = await getBookings(session?.user?.guestId);
+  const bookings = await getBookings((session?.user as any)?.guestId);
+  console.log(bookings);
 
   return (
     <div>

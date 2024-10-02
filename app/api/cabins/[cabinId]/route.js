@@ -9,7 +9,7 @@ export async function GET(req, { params }) {
       getBookedDatesByCabinId(cabinId),
     ]);
     return Response.json({ cabin, bookedDates });
-  } catch (error) {
+  } catch {
     return Response.json({ message: "Cabin not found" });
   }
 }

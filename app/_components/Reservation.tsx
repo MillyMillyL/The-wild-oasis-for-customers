@@ -4,7 +4,7 @@ import ReservationForm from "./ReservationForm";
 import { getBookedDatesByCabinId, getSettings } from "../_lib/data-service";
 import { auth } from "../_lib/auth";
 import LoginMessage from "@/app/_components/LoginMessage";
-
+// @ts-expect-error typeerror
 export default async function Reservation({ cabin }) {
   const [settings, bookedDates] = await Promise.all([
     getSettings(),

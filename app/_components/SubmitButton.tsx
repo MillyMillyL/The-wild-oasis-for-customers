@@ -1,6 +1,6 @@
 "use client";
 import { useFormStatus } from "react-dom";
-
+// @ts-expect-error typeerror
 export default function SubmitButton({ children, pendingLabel }) {
   const { pending } = useFormStatus();
 

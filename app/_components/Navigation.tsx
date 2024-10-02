@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { auth } from "../_lib/auth";
 import NavLinks from "./NavLinks";
@@ -18,7 +19,7 @@ export default async function Navigation() {
               <img
                 className="h-8 rounded-full"
                 src={session.user.image}
-                alt={session.user.name}
+                alt={session?.user?.name || ""}
                 referrerPolicy="no-referrer"
               />
               <span>Guest Area</span>

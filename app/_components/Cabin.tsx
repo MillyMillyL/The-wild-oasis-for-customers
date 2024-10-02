@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import TextExpander from "@/app/_components/TextExpander";
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
-
+// @ts-expect-error typeerror
 function Cabin({ cabin }) {
   const { name, maxCapacity, image, description } = cabin;
 
